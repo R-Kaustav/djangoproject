@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8D918D; /* Light blue background */
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #0d47a1; /* Dark blue */
+            text-align: center;
+        }
+
+        form {
+            max-width: 700px; /* Increased form size */
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #d3d3d3;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #1565c0; /* Medium blue for labels */
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #1e88e5; /* Blue border */
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #1e88e5; /* Blue button */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1565c0; /* Darker blue on hover */
+        }
+
+        textarea {
+            resize: vertical;
+            height: 120px; /* Slightly taller textarea */
+        }
+    </style>
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form method="post" action="{% url 'submit_feedback' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">On a scale of 1-10 give ur rating:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" maxlength="150" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
